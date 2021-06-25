@@ -4,13 +4,13 @@ from django.contrib.auth.models import User
 from .models import CustomUser
 
 class registeration_form(UserCreationForm):
+    email=forms.EmailField(max_length=32, help_text='email')
     username = forms.CharField(max_length=32, help_text='username')
     firstName = forms.CharField(max_length=32, help_text='first name')
     lastName=forms.CharField(max_length=32, help_text='last name')
-    email=forms.EmailField(max_length=32, help_text='email')
+    role=forms.CharField(max_length=32, help_text='role')
     password1=forms.CharField(max_length=32, help_text='password')
     password2=forms.CharField(max_length=32, help_text='password comfirm')
-    role=forms.CharField(max_length=32, help_text='role')
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
