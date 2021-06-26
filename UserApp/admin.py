@@ -6,13 +6,13 @@ from django.forms import TextInput, Textarea
 
 class UserAdminConfig(UserAdmin):
     model = CustomUser
-    search_fields = ('email', 'user_name', 'firstName', "lastName")
+    search_fields = ('email', 'username', 'firstName', "lastName", "role")
     #list_filter = ('email', 'user_name', 'first_name', 'is_active', 'is_staff')
-    list_filter = ('email', 'user_name', 'firstName')
+    list_filter = ('email', 'username', 'firstName', "role")
     ordering = ('email',)
-    list_display = ('email', 'user_name', 'firstName', "lastName")
+    list_display = ('email', 'username', 'firstName', "lastName", "role")
     fieldsets = (
-        (None, {'fields': ('email', 'user_name', 'firstName', "lastName")}),
+        (None, {'fields': ('email', 'username', 'firstName', "lastName", "role")}),
         #('Permissions', {'fields': ('is_staff', 'is_active')}),
         #('Personal', {'fields': ('about',)}),
     )
@@ -23,7 +23,7 @@ class UserAdminConfig(UserAdmin):
         (None, {
             'classes': ('wide',),
             #'fields': ('email', 'user_name', 'firstName', 'password1', 'password2', 'is_active', 'is_staff')
-            'fields': ('email', 'user_name', 'firstName', "lastName", 'password1', 'password2',)
+            'fields': ('email', 'username', 'firstName', "lastName", "role", 'password1', 'password2',)
             }
          ),
     )

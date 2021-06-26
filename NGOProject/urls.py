@@ -23,7 +23,7 @@ from UserApp import views as UserApp_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("users/", include("UserApp.urls")),
-    path("register/", UserApp_views.register, name="register"),
+    #path("register/", UserApp_views.register, name="register"),
     path("login/", auth_views.LoginView.as_view(template_name="UserApp/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(template_name="UserApp/logout.html"), name="logout"),
 ]

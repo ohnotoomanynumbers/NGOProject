@@ -1,5 +1,5 @@
 from . import views
-from .views import UserListView
+from .views import UserListView, UserUpdateView, UserCreateView, UserDeleteView
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -7,9 +7,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', UserListView.as_view(), name="users-list"),
+    path('register/', UserCreateView.as_view(), name="register"),
+    path("<int:pk>/delete/", UserDeleteView.as_view(), name="users-detele"),
 	#path("users/<int:pk>/", ProductDetailView.as_view(), name="users-detail"),
-	#path("users/<int:pk>/edit/", ProductUpdateView.as_view(), name="users-update"),
-	#path("users/<int:pk>/delete/", ProductDeleteView.as_view(), name="users-delete"),
+	path("<int:pk>/update/", UserUpdateView.as_view(), name="users-update"),
+	#path(r'^update/$', UserUpdateView.as_view(), name="users-update"),
+	#path("update/", UserUpdateView.as_view(), name="users-update"),
+	
 	#path("users/create/", ProductCreateView.as_view(), name="users-create"),
     path("test/", views.test, name="users-test"),
 

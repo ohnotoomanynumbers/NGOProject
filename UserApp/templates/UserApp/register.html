@@ -4,16 +4,19 @@
   	<form method="POST">
   		{% csrf_token %}
   		<fieldset class="form-group">
-  			<legend class="border-bttom mb-4">Add User</legend>
-  			{{ form.as_p }}
+  			<legend class="border-bttom mb-4">Create User</legend>
+  			{% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+        {% endfor %}
   		</fieldset>
   		<div class="form-group">
-  			<button class="btn btn-outline-info" type="submit"> Sign Up</button>
+  			<button class="btn btn-outline-info" type="submit"> Add User</button>
   		</div>	
   	</form>
   	<div class="border-top pt-3">
-  		<small class="text-muted"> Already had an account?<a class="ml-2", href="{% url "login" %}"> Sign In</a>
-  		</small>
   	</div>
   </div>
 {% endblock content %}

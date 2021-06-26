@@ -1,7 +1,7 @@
 {% extends "UserApp/base.html" %}
 {% block content %}
   <h1>User Management</h1>
-   &nbsp;&nbsp; 
+   <a class="nav-link" href="{% url "register" %}">Add user</a>
   <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
@@ -9,6 +9,8 @@
       <th scope="col">Last Name</th>
       <th scope="col">User Email</th>
       <th scope="col">User Role</th>
+      <th scope="col">&nbsp;&nbsp;</th>
+      <th scope="col">&nbsp;&nbsp;</th>
     </tr>
   </thead>
   {% for user in users %}
@@ -18,6 +20,8 @@
         <th>{{ user.lastName }}</th>
         <th>{{ user.email }}</th>
         <th>{{ user.role }}</th>
+        <th><a class="nav-link" href="{% url 'users-update' user.pk %}">edit</a></th>
+        <th><a class="nav-link" href="{% url 'users-detele' user.pk %}">detele</th>
       </tr>
     </tbody>
   {% endfor %}

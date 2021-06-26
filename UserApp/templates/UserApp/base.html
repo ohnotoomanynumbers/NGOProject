@@ -17,9 +17,15 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">NGO</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'users-list' %}">User Management</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Event Management</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">User View</a>
+                    {% if user.is_authenticated %}
+                      {% if user.role == "admin" %}
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'users-list' %}">User Management</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Event Management</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">User View</a>
+                      {% endif %}
+                    {% else %}
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Event </a>
+                    {% endif %}
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -32,7 +38,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                                 {% if user.is_authenticated %}
-                                  <a class="nav-item nav-link"> {{ user.username }}</a>
+                                  <li class="nav-item active"><a class="nav-link" href="#!">{{ user.username }}({{ user.role }})</a></li>
                                   <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                                 {% else %}
                                   <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
