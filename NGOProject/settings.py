@@ -88,7 +88,19 @@ DATABASES = {
     }
 }
 
-
+"""
+DATABASES = {
+    'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'HOST': 'database-2.cgt5ifdpk0aa.us-east-2.rds.amazonaws.com',
+                'PORT': '3306',
+                'NAME': 'aws_productDB',
+                'USER': 'admin',
+                'PASSWORD': 'super_password',
+                'sql_mode': 'traditional',
+    },
+}
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
