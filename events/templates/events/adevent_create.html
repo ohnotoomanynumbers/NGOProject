@@ -7,8 +7,21 @@
         <legend class="border-bttom mb-4">Save Event</legend>
         {% for field in form %}
         <div class="fieldWrapper">
+          {% if field.label_tag == 'start' or field.label_tag == 'end'%}
+          <div>
+            <label class="required" for="id_start_0">{% field.label_tag %}</label>
+            <p class="datetime">
+              Date: <input type="text" name="start_0" value="2121-12-12" class="vDateField" size="10" required="" id="id_start_0"><span class="datetimeshortcuts">&nbsp;<a href="#">Today</a>&nbsp;|&nbsp;<a href="#" id="calendarlink0"><span class="date-icon" title="Choose a Date"></span></a></span>
+              <br>
+              Time: <input type="text" name="start_1" value="00:00:00" class="vTimeField" size="8" required="" id="id_start_1"><span class="datetimeshortcuts">&nbsp;<a href="#">Now</a>&nbsp;|&nbsp;<a href="#" id="clocklink0"><span class="clock-icon" title="Choose a Time"></span></a></span>
+              <br>
+              <span class="timezonewarning">Note: You are 6 hours behind server time.</span>
+            </p>
+          </div>
+          {% else %}
             {{ field.errors }}
             {{ field.label_tag }} {{ field }}
+          {% endif %}
         </div>
         {% endfor %}
       </fieldset>

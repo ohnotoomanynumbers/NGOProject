@@ -14,6 +14,7 @@ class Event(models.Model):
 
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=200)
+    image = models.ImageField(null=True, blank=True)
     category = models.CharField(
         max_length=12,
         choices=EventCategory.choices,
@@ -22,4 +23,5 @@ class Event(models.Model):
     start = models.DateTimeField()
     end = models.DateTimeField()
     adult_price = models.FloatField()
-    discount_price = models.FloatField()
+    child_price = models.FloatField()
+    allow_registration = models.BooleanField(default=False)
