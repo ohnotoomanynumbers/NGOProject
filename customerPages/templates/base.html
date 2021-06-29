@@ -1,34 +1,16 @@
 {% load static %}
-<!DOCTYPE html>
+
+
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+</head>
     <body>
         <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">NGO</div>
-                <div class="list-group list-group-flush">
-                    {% if user.is_authenticated %}
-                      {% if user.role == "admin" %}
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'users-list' %}">User Management</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Event Management</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">User View</a>
-                      {% endif %}
-                    {% else %}
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Event </a>
-                    {% endif %}
-                </div>
-            </div>
-            <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">

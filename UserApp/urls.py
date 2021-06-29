@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', UserListView.as_view(), name="users-list"),
     path('register/', UserCreateView.as_view(), name="register"),
-    path("<int:pk>/delete/", UserDeleteView.as_view(), name="users-detele"),
+    path("<int:pk>/delete/", UserDeleteView.as_view(), name="users-delete"),
 	#path("users/<int:pk>/", ProductDetailView.as_view(), name="users-detail"),
 	path("<int:pk>/update/", UserUpdateView.as_view(), name="users-update"),
 	#path(r'^update/$', UserUpdateView.as_view(), name="users-update"),

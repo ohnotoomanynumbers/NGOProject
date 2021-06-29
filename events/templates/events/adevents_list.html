@@ -14,7 +14,7 @@
       <th scope="col">&nbsp;&nbsp;</th>
     </tr>
   </thead>
-  {% for event in Event.objects.all() %}
+  {% for event in events %}
     </tbody>
       <tr>
         <th>{{ event.name }}</th>
@@ -22,8 +22,8 @@
         <th>{{ event.location }}</th>
         <th>{{ event.start }}</th>
         <th>{{ event.end }}</th>
-        <th><a class="nav-link" href="{% url 'events-update' user.pk %}">edit</a></th>
-        <th><a class="nav-link" href="{% url 'events-detele' user.pk %}">delete</a></th>
+        <th><a class="nav-link" href="{% url 'events-update' event.pk %}">edit</a></th>
+        <th><a class="nav-link" href="{% url 'events-delete' event.pk %}">delete</a></th>
       </tr>
     </tbody>
   {% endfor %}

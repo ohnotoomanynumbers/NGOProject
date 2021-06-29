@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from .models import *
+from .forms import EventForm, EventUpdateForm
+from .models import Event
 # Create your views here.
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 
@@ -26,8 +26,8 @@ class EventListView(LoginRequiredMixin, ListView):
 class EventCreateView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     model = Event
-    template_name = "events/adcreate_event.html"
-    #form_class = event_form
+    template_name = "events/adevent_create.html"
+    form_class = EventForm
 
     def get_success_url(self):
         return reverse('events-list')
@@ -35,7 +35,7 @@ class EventCreateView(LoginRequiredMixin, CreateView):
 
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
-    #form_class = updateEvent_form
+    form_class = EventUpdateForm
     template_name = 'events/adevent_update.html'
     context_object_name = 'event'
 
@@ -52,9 +52,12 @@ class EventUpdateView(LoginRequiredMixin, UpdateView):
             raise PermissionDenied()
         return super().dispatch(request, *args, **kwargs)
 
+
 class EventDeleteView(LoginRequiredMixin, DeleteView):
     model = Event
     template_name = "events/adevent_delete.html"
 
     def get_success_url(self):
         return reverse('events-list')
+
+
