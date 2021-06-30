@@ -32,8 +32,13 @@ class event_update_form(forms.ModelForm):
 		fields = ["event_name", "category", "location", "start_date", "end_date", "start_time", 
 		"end_time", "adult_price", "child_price", "event_description", "event_image", "allow_registration"]
 
+choices = [event.event_name for event in Event.objects.all()]
+
+EVENT_CHOICES=[zip(choices,Event.objects.all())]
+
+
 class event_register_form(forms.ModelForm):
-	event_name = forms.CharField(max_length=100)
+	event_name = forms.Select(choices=EVENT_CHOICES)
 	first_name = forms.CharField(max_length=100)
 	last_name = forms.CharField(max_length=100)
 	email = forms.CharField(max_length=100)

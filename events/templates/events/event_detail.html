@@ -16,15 +16,17 @@
       End: {{ event.end_date }} {{ event.end_time }}
     </div>
     <div style="width:40%; float: left; display: inline-block;">
-      {{ event.event_description }}<br>
-      {{event.adult_price}}<br>
-      {{ event.child_price}}
+      Event Description:{{ event.event_description }}<br>
+      Adult Price:{{ event.adult_price }}<br>
+      Child Price:{{ event.child_price}}
     </div>
     <div style="width:40%; float: left; display: inline-block;">
       <img src="{{ event.event_image.url }}" width="600" height="400">
     </div>
   </div>
+  <a target="_blank" href="{% url 'event-register' event.pk %}">
+      <button type="button">Register</button>
+  </a>
 
-  <button type="button">Register</button>
 
 {% endblock content %}
