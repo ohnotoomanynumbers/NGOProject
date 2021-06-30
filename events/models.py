@@ -17,6 +17,7 @@ class Event(models.Model):
 
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=200)
+    image = models.ImageField(null=True, blank=True)
     category = models.CharField(
         max_length=12,
         choices=EventCategory.choices,
@@ -32,6 +33,7 @@ class Event(models.Model):
     end_time = models.TimeField()
     adult_price = models.FloatField()
     child_price = models.FloatField()
+<<<<<<< HEAD
     event_description = models.CharField(max_length=200)
     event_image=models.ImageField(default="default.jpg", upload_to="event_image")
     allow_registration=models.BooleanField(default=True)
@@ -55,3 +57,6 @@ class EventRegisterInfo(models.Model):
     def __str__(self):
         return self.email
 
+=======
+    allow_registration = models.BooleanField(default=False)
+>>>>>>> b4f590de32087a73108599623d12c68a008cb234

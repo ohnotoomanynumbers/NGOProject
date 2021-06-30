@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django import forms
 from .models import Event, EventRegisterInfo
 
@@ -45,3 +46,20 @@ class event_register_form(forms.ModelForm):
 		model = Event
 		fields = ["event_name", "first_name", "last_name", "email", "contact", "address", 
 		"adult_qty", "child_qty"]
+=======
+
+from django.forms import ModelForm
+from events.models import Event
+
+
+class EventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = '__all__'
+
+
+class EventUpdateForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = '__all__'
+>>>>>>> b4f590de32087a73108599623d12c68a008cb234

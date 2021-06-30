@@ -21,7 +21,7 @@
         <th>{{ user.email }}</th>
         <th>{{ user.role }}</th>
         <th><a class="nav-link" href="{% url 'users-update' user.pk %}">edit</a></th>
-        <th><a class="nav-link" href="{% url 'users-detele' user.pk %}">detele</th>
+        <th><a class="nav-link" href="{% url 'users-delete' user.pk %}">delete</a></th>
       </tr>
     </tbody>
   {% endfor %}

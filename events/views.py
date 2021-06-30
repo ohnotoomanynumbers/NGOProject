@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import event_create_form, event_update_form, event_register_form
 
-from .models import *
+from .forms import EventForm, EventUpdateForm
+from .models import Event
 # Create your views here.
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 
@@ -31,10 +31,18 @@ class EventListView(ListView):
 class EventCreateView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     model = Event
+<<<<<<< HEAD
     template_name = "events/event_create.html"
     #fields = ["event_name", "category", "location", "start_date", "end_date", "start_time", "end_time", "adult_price", 
     #"child_price", "event_description", "event_image" ]
     form_class = event_create_form
+=======
+    template_name = "events/adevent_create.html"
+    form_class = EventForm
+
+    def get_success_url(self):
+        return reverse('events-list')
+>>>>>>> b4f590de32087a73108599623d12c68a008cb234
 
 class EventRegisterView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
@@ -69,8 +77,13 @@ class EventRegisterView(LoginRequiredMixin, CreateView):
 
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
+<<<<<<< HEAD
     form_class = event_update_form
     template_name = 'events/event_update.html'
+=======
+    form_class = EventUpdateForm
+    template_name = 'events/adevent_update.html'
+>>>>>>> b4f590de32087a73108599623d12c68a008cb234
     context_object_name = 'event'
 
     def get_success_url(self):
@@ -86,6 +99,7 @@ class EventUpdateView(LoginRequiredMixin, UpdateView):
             raise PermissionDenied()
         return super().dispatch(request, *args, **kwargs)
 
+
 class EventDeleteView(LoginRequiredMixin, DeleteView):
     model = Event
     template_name = "events/event_delete.html"
@@ -93,9 +107,13 @@ class EventDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse('events-list')
 
+<<<<<<< HEAD
 class EventDetailView(DetailView):
     model = Event
     template_name = "events/event_detail.html"
     success_url = "/event_register/"
     def get_success_url(self):
         return reverse_lazy('event-register', kwargs={'event': self.object})
+=======
+
+>>>>>>> b4f590de32087a73108599623d12c68a008cb234
