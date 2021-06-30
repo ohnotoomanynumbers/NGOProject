@@ -4,11 +4,12 @@ from UserApp import models as umod
 from events import models as emod
 
 
-class Address(models.Model):
-    customer = models.ForeignKey(
+class Customer(models.Model):
+    customer = models.OneToOneField(
         umod.CustomUser,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
+    contact_num = models.CharField(max_length=10)
     address1 = models.CharField(
         "Address line 1",
         max_length=1024,
@@ -26,15 +27,7 @@ class Address(models.Model):
         "City",
         max_length=1024,
     )
-
-
-class Customer(models.Model):
-    customer = models.OneToOneField(
-        umod.CustomUser,
-        on_delete=models.CASCADE,
-    )
-    contact_num = models.CharField(max_length=10)
-    address = Address()
     events = models.ManyToManyField(
         emod.Event,
     )
+

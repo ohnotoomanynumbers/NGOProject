@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
-from django.urls import reverse
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import event_create_form, event_update_form, event_register_form
 
-from .forms import EventForm, EventUpdateForm
-from .models import Event
+from .models import Event, EventRegisterInfo
 # Create your views here.
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 
@@ -68,6 +68,7 @@ class EventRegisterView(LoginRequiredMixin, CreateView):
         return context
     """
 
+
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
 
@@ -100,7 +101,6 @@ class EventDeleteView(LoginRequiredMixin, DeleteView):
 class EventDetailView(DetailView):
     model = Event
     template_name = "events/event_detail.html"
-    success_url = "/event_register/"
     def get_success_url(self):
         return reverse_lazy('event-register', kwargs={'event': self.object})
 

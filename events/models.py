@@ -25,7 +25,7 @@ class Event(models.Model):
     )
     """
     event_name = models.CharField(max_length=100)
-    category = models.CharField(max_length=100, choices = EVENT_CHOICES)
+    category = models.CharField(max_length=100, choices=EVENT_CHOICES)
     location = models.CharField(max_length=100)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -34,8 +34,8 @@ class Event(models.Model):
     adult_price = models.FloatField()
     child_price = models.FloatField()
     event_description = models.CharField(max_length=200)
-    event_image=models.ImageField(default="default.jpg", upload_to="event_image")
-    allow_registration=models.BooleanField(default=True)
+    event_image = models.ImageField(default="default.jpg", upload_to="event_image")
+    allow_registration = models.BooleanField(default=True)
 
     def __str__(self):
         return self.event_name

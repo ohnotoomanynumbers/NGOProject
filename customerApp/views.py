@@ -14,3 +14,4 @@ class EventDetailView(DetailView):
     model = Event
     template_name = "customer_event_detail.html"
     context_object_name = "cdetail"
+

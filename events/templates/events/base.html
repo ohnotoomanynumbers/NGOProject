@@ -21,8 +21,8 @@
                     {% if user.is_authenticated %}
                       {% if user.role == "admin" %}
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'users-list' %}">User Management</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'events-list' %}">Event Management</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">User View</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'events-manage' %}">Event Management</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'events-list' %}">User View</a>
                       {% endif %}
                     {% else %}
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Event </a>

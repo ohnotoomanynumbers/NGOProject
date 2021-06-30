@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("customerApp.urls")),
     path("users/", include("UserApp.urls")),
-    path('', include('events.urls')),
+    path('events/', include('events.urls')),
     #path('', events_views.EventListView.as_view()),
     #path("register/", UserApp_views.register, name="register"),
 
