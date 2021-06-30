@@ -1,0 +1,16 @@
+{% extends "UserApp/base.html" %}
+{% block content %}
+ <form method="post" enctype="multipart/form-data">
+  <div class="content-section">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bttom mb-4">Edit an event</legend>
+        {{ form.as_p }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit"> update</button>
+      </div>  
+    </form>
+  </div>
+{% endblock content %}

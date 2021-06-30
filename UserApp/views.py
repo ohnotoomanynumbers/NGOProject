@@ -28,6 +28,10 @@ print("################")
 def test(request):
 	#return HttpResponse("<h1>product about</h1>")
 	return render(request, "UserApp/test.html", {"title":"test"})
+
+def home(request):
+	#return HttpResponse("<h1>product about</h1>")
+	return render(request, "UserApp/home.html", {"title":"home"})
 """
 def register(request):
 	if request.method == "POST":
