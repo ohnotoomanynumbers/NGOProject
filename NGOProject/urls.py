@@ -25,7 +25,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include("customerPages.urls")),
+    path('', include("customerApp.urls")),
     path("users/", include("UserApp.urls")),
 
     path('events/', include('events.urls')),

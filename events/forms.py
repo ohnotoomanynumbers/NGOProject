@@ -8,6 +8,7 @@ class EventForm(ModelForm):
         model = Event
         fields = '__all__'
 
+
 class EventUpdateForm(ModelForm):
     class Meta:
         model = Event
