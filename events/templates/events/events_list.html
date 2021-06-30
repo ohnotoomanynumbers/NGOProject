@@ -1,0 +1,43 @@
+{% extends "UserApp/base.html" %}
+{% block content %}
+  <h1>Event</h1>
+  <head>
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 300px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 200px;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+  {% for event in events %}
+  <div class="gallery">
+  <a target="_blank" href="{% url 'event-detail' event.pk %}">
+    <img src="{{ event.event_image.url }}" width="600" height="400">
+  </a>
+  <div class="desc">{{ event.event_name }}: {{ event.location }}</div>
+</div>
+  <!--figure>
+    <img src="{{ event.event_image.url }}"  width="250" height="150">
+    <figcaption> {{ event.event_name }}: {{ event.location }}</figcaption>
+  </figure-->
+  {% endfor %}
+  </body>
+{% endblock content %}

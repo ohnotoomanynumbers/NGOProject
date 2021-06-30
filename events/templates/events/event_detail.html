@@ -1,0 +1,16 @@
+{% extends "UserApp/base.html" %}
+{% block content %}
+  <h1>Event Registration Detail: {{ event.event_name }}</h1>
+  <p> Event name:{{ event.event_name }}</p>
+  <p> Category: {{ event.category }}</p>
+  <p> Location: {{ event.location }}</p>
+  <p> Start Date & Time: {{ event.start_date }} {{ event.start_time }}</p>
+  <p> End Date & Time: {{ event.end_date }} {{ event.end_time }}</p>
+  <p> Adult ticket price: ${{ event.adult_price }}</p>
+  <p> Child ticket price: ${{ event.child_price  }}</p>
+  <p> Description: {{ event.event_description  }}</p>
+  <img src="{{ event.event_image.url }}" width="600" height="400">
+  {% if event.allow_registration %}
+    <p><a href="{% url 'event-register' event.pk %}" class="btn btn-primary">Register for event</a></p>
+  {% endif %}
+{% endblock content %}

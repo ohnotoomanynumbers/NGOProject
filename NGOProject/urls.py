@@ -17,14 +17,19 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from UserApp import views as UserApp_views
+from events import views as events_views
 from django.urls import path, include
 from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("users/", include("UserApp.urls")),
-    path('events/', include('events.urls'), name="events"),
+    path('', include('events.urls')),
+    #path('', events_views.EventListView.as_view()),
     #path("register/", UserApp_views.register, name="register"),
     path("login/", auth_views.LoginView.as_view(template_name="UserApp/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(template_name="UserApp/logout.html"), name="logout"),
 ]
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

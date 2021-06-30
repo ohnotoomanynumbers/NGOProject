@@ -1,0 +1,16 @@
+{% extends "UserApp/base.html" %}
+{% block content %}
+ <form method="post" enctype="multipart/form-data">
+  <div class="content-section">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bttom mb-4">Register for event {{ event_name }} {{ event.event_name }} {{ event }} {{ object.pk }} {{ object.event_name }} {{ event_pk }}</legend>
+        {{ form.as_p }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit"> Register</button>
+      </div>  
+    </form>
+  </div>
+{% endblock content %}
