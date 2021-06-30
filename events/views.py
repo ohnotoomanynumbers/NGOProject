@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import event_create_form, event_update_form, event_register_form
@@ -68,6 +68,9 @@ class EventRegisterView(LoginRequiredMixin, CreateView):
         return context
     """
 
+def redirect_view(request):
+    response = redirect('events-list')
+    return response
 
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event

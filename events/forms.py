@@ -34,7 +34,7 @@ class event_update_form(forms.ModelForm):
 
 choices = [event.event_name for event in Event.objects.all()]
 
-EVENT_CHOICES=[zip(choices,Event.objects.all())]
+EVENT_CHOICES=[zip(Event.objects.all())]
 
 
 class event_register_form(forms.ModelForm):

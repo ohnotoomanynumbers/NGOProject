@@ -23,10 +23,11 @@ from events import views as events_views
 from django.urls import path, include
 from django.contrib import admin
 
+from events.views import redirect_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("customerApp.urls")),
+    path('', redirect_view),
     path("users/", include("UserApp.urls")),
     path('events/', include('events.urls')),
     #path('', events_views.EventListView.as_view()),
